@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Usability Test Summary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Test Summary</h1>
+
+        <div class="summary">
+            <p><strong>Total Tasks:</strong> {{ summary.total }}</p>
+            <p><strong>Successful:</strong> {{ summary.success }}</p>
+            <p><strong>Failed:</strong> {{ summary.fail }}</p>
+            <p><strong>Average Time:</strong> {{ "%.2f"|format(summary.avg_time) }} seconds</p>
+        </div>
+
+        <table border="1" cellpadding="8" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Time Taken (s)</th>
+                    <th>Success</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in results %}
+                <tr>
+                    <td>{{ r.task }}</td>
+                    <td>{{ "%.2f"|format(r.time_taken) }}</td>
+                    <td>{% if r.success %}✔{% else %}✘{% endif %}</td>
+                    <td>{{ r.start_time | datetimeformat }}</td>
+                    <td>{{ r.end_time | datetimeformat }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <br/>
+        <a href="{{ url_for('download_pdf') }}"><button>Download PDF Report</button></a>
+
+        <a href="{{ url_for('index') }}"><button>🔁 Restart Test</button></a>
+             
+    </div>
+</body>
+</html>

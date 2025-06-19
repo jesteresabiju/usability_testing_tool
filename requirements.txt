@@ -1,0 +1,7 @@
+Flask
+selenium
+webdriver-manager
+fpdf
+PyPDF2
+requests
+gunicorn

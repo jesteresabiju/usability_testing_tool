@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Results</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #f3e5f5, #e1f5fe);
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 50px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      text-align: center;
+      color: #1a237e;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+
+    .result-pass {
+      color: green;
+      font-weight: bold;
+    }
+
+    .result-fail {
+      color: red;
+      font-weight: bold;
+    }
+
+    .result-na {
+      color: #999;
+      font-style: italic;
+    }
+
+    .btn-custom {
+      border-radius: 25px;
+      padding: 10px 20px;
+      margin: 10px;
+    }
+
+    .email-form {
+      margin-top: 30px;
+    }
+
+    .btn-remove-history {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Flash Messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible fade show mx-auto mt-3" style="max-width: 960px;" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<div class="container">
+  <h2>Test Completed</h2>
+
+  <table class="table table-bordered text-center align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>Test Name</th>
+        <th>URL</th>
+        {% for t in tests[0].selected %}
+          <th>{{ t|capitalize }}{% if t == 'login' %}/Sign In{% endif %}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for test in tests %}
+        <tr>
+          <td>{{ test.name }}</td>
+          <td>{{ test.url }}</td>
+          {% for t in test.selected %}
+            {% set result = test.get(t, 'N/A') %}
+            <td class="{% if result == 'PASS' %}result-pass{% elif result == 'FAIL' %}result-fail{% else %}result-na{% endif %}">
+              {{ result }}
+            </td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="text-center mt-4">
+    {% if last_pdf %}
+      <a href="{{ url_for('download_current') }}" class="btn btn-success btn-custom">Download This Report</a>
+    {% endif %}
+    {% if all_pdf %}
+      <a href="{{ url_for('download_all') }}" class="btn btn-outline-secondary btn-custom">Download All Reports</a>
+    {% endif %}
+    <a href="{{ url_for('test_external') }}" class="btn btn-primary btn-custom">Run Another Test</a>
+    <form action="{{ url_for('clear') }}" method="POST" style="display:inline;">
+      <button type="submit" class="btn btn-danger btn-custom btn-remove-history">Clear History</button>
+    </form>
+  </div>
+
+  <form method="POST" class="email-form">
+    <div class="mb-3 mt-4">
+      <label for="email" class="form-label">Email the report</label>
+      <input type="email" name="email" class="form-control" id="email" placeholder="Enter email address" required>
+    </div>
+    <div class="mb-3">
+      <select name="choice" class="form-select" required>
+        <option value="current">Send current report</option>
+        <option value="all">Send all reports</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-dark btn-custom">Send Email</button>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
