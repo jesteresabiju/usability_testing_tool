@@ -44,78 +44,83 @@ A Flask-based web app that automates usability testing for websites using Google
 
 ## 📁 Folder Structure
 
+```none
 usability_testing_tool/
-├── app.py # Main Flask app
-├── external_test_runner.py # Background test logic
-├── test_app.py # Unit test module
-├── utils/ # Utility functions (e.g., API, Selenium)
-├── templates/ # HTML templates (Jinja2)
-├── static/ # CSS, JS, spinner, report placeholder
-├── pdf_reports/ # (Ignored) generated PDF reports
-├── data/ # Email + API config if needed
-├── tests/ # (Optional) for test scripts
+├── app.py                   # Main Flask app
+├── external_test_runner.py  # Background test logic
+├── test_app.py              # Unit test module
+├── utils/                   # Utility functions (e.g., API, Selenium)
+├── templates/               # HTML templates (Jinja2)
+├── static/                  # CSS, JS, spinner, report placeholder
+├── pdf_reports/             # (Ignored) generated PDF reports
+├── data/                    # Email + API config if needed
+├── tests/                   # (Optional) for test scripts
 ├── requirements.txt
 ├── tasks.json
 ├── Procfile
 ├── .gitignore
 └── README.md
+`````
+## 🚀 Getting Started
 
-yaml
-Copy
-Edit
+Follow these steps to set up and run the Usability Testing Tool locally.
 
 ---
 
-## 🚀 Getting Started
-
-### 1. Clone the Repo
+### 1️⃣ Clone the Repository
 
 ```bash
 git clone https://github.com/jesteresabiju/usability_testing_tool.git
 cd usability_testing_tool
-2. Install Dependencies
-Make sure you're using Python 3.8+ and then run:
+```
 
-bash
-Copy
-Edit
+---
+
+### 2️⃣ Install Dependencies
+
+Ensure you're using **Python 3.8+**, then install all required packages:
+
+```bash
 pip install -r requirements.txt
-3. Run the App
-bash
-Copy
-Edit
-python app.py
-Visit the app in your browser at:
-http://localhost:5000
+```
 
-🔐 Configuration
-Create a config.py or use environment variables for:
+---
 
-python
-Copy
-Edit
+### 3️⃣ Configure API Keys and Email
+
+Create a `config.py` file or set environment variables with the following:
+
+```python
 EMAIL_ADDRESS = 'your_email@gmail.com'
 EMAIL_PASSWORD = 'your_app_password'
 GOOGLE_API_KEY = 'your_google_api_key'
 SEARCH_ENGINE_ID = 'your_cse_id'
-For Gmail, generate an App Password if 2FA is enabled.
+```
 
-📤 Deployment
-This app is deployable on platforms like Heroku, Render, or Railway.
+> 💡 If you're using Gmail with 2FA, make sure to [generate an App Password](https://support.google.com/accounts/answer/185833?hl=en).
 
-Make sure to:
+---
 
-Set environment variables for email + API keys
+### 4️⃣ Run the Flask App
 
-Use the provided Procfile for deployment
+```bash
+python app.py
+```
 
-Install Chrome & chromedriver (if using Selenium in headless mode)
+Now open your browser and visit:
 
-📜 License
-This project is licensed under the MIT License.
+```
+http://localhost:5000
+```
 
-👤 Author
-Developed by @jesteresabiju
+---
 
-📬 Contact
-For questions or support, email: workwithjesse123@gmail.com
+### 5️⃣ Start Testing
+
+- Add website names and URLs
+- Select the specific usability tests to run (e.g., Search, Navbar, Footer)
+- Submit to view results and download the PDF report
+
+---
+
+✔️ You're all set! Let the testing begin.
