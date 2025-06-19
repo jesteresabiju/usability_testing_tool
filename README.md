@@ -46,21 +46,26 @@ A Flask-based web app that automates usability testing for websites using Google
 
 ```none
 usability_testing_tool/
-├── app.py                   # Main Flask app
-├── external_test_runner.py  # Background test logic
-├── test_app.py              # Unit test module
-├── utils/                   # Utility functions (e.g., API, Selenium)
-├── templates/               # HTML templates (Jinja2)
-├── static/                  # CSS, JS, spinner, report placeholder
-├── pdf_reports/             # (Ignored) generated PDF reports
-├── data/                    # Email + API config if needed
-├── tests/                   # (Optional) for test scripts
-├── requirements.txt
-├── tasks.json
-├── Procfile
-├── .gitignore
-└── README.md
+├── app.py # Main Flask app
+├── templates/ # Jinja2 HTML templates (index, test form, results)
+├── pdf_reports/ # (Ignored) generated PDF reports
+├── requirements.txt # Python dependencies
+├── Procfile # For deployment (e.g. on Heroku)
+├── .gitignore # Ignore logs, reports, secrets, etc.
+└── README.md # Project overview (this file)
 `````
+## 📦 Requirements
+
+- Python 3.8+
+- Chrome browser
+- ChromeDriver (auto-managed by `webdriver_manager`)
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+`````
+
 ## 🚀 Getting Started
 
 Follow these steps to set up and run the Usability Testing Tool locally.
