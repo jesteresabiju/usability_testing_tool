@@ -1,34 +1,47 @@
-# Usability Testing Tool
+# 🧪 Usability Testing Tool
 
-A Flask-based web app to run automated usability tests on websites using Google API and Selenium.
+A Flask-based web app that automates usability testing for websites using Google Custom Search API and Selenium. Designed for speed, flexibility, and accuracy with dynamic test selection, live progress tracking, and PDF reporting.
+
+---
 
 ## 🔍 Features
 
-- Detects presence of:
+- ✅ **Test Features (per-site):**
   - Search Box
   - Navigation Bar
-  - Contact Page
-  - Footer
-  - Login/Sign-in Option
-- Parallel execution with progress spinner
-- PDF report generation
-- Email report delivery (Gmail)
-- Works with both API and Selenium fallback
-- Per-site test selection with real-time status
+  - Contact Page / Link
+  - Footer Presence
+  - Login / Sign-in Option
 
-## 🛠 Technologies
+- ⚡ **Performance:**
+  - Parallel execution of tests using threads
+  - Progress spinner with real-time completion updates
 
-- Python (Flask)
-- Selenium (Chrome WebDriver)
-- Google Custom Search API
-- FPDF
-- Bootstrap 5
+- 🧾 **Reporting:**
+  - PDF report generation (per test run)
+  - Optional email delivery via Gmail
 
-## 🚀 Running the App
+- 🔄 **Fallback Logic:**
+  - API-based detection first
+  - Selenium fallback if API fails
 
-```bash
-# Install dependencies
-pip install -r requirements.txt
+- 🎛️ **User Control:**
+  - Per-site test selection
+  - Per-test configuration
 
-# Run the app
-python app.py
+---
+
+## 🛠 Technologies Used
+
+- **Python 3.x**
+- **Flask** — Web framework
+- **Selenium** — Browser automation
+- **Google Custom Search API** — Primary content detection
+- **FPDF** — PDF generation
+- **Bootstrap 5** — UI styling (external HTML templates)
+
+---
+
+## 📁 Folder Structure
+
+
