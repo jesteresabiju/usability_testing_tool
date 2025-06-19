@@ -44,4 +44,78 @@ A Flask-based web app that automates usability testing for websites using Google
 
 ## 📁 Folder Structure
 
+usability_testing_tool/
+├── app.py # Main Flask app
+├── external_test_runner.py # Background test logic
+├── test_app.py # Unit test module
+├── utils/ # Utility functions (e.g., API, Selenium)
+├── templates/ # HTML templates (Jinja2)
+├── static/ # CSS, JS, spinner, report placeholder
+├── pdf_reports/ # (Ignored) generated PDF reports
+├── data/ # Email + API config if needed
+├── tests/ # (Optional) for test scripts
+├── requirements.txt
+├── tasks.json
+├── Procfile
+├── .gitignore
+└── README.md
 
+yaml
+Copy
+Edit
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repo
+
+```bash
+git clone https://github.com/jesteresabiju/usability_testing_tool.git
+cd usability_testing_tool
+2. Install Dependencies
+Make sure you're using Python 3.8+ and then run:
+
+bash
+Copy
+Edit
+pip install -r requirements.txt
+3. Run the App
+bash
+Copy
+Edit
+python app.py
+Visit the app in your browser at:
+http://localhost:5000
+
+🔐 Configuration
+Create a config.py or use environment variables for:
+
+python
+Copy
+Edit
+EMAIL_ADDRESS = 'your_email@gmail.com'
+EMAIL_PASSWORD = 'your_app_password'
+GOOGLE_API_KEY = 'your_google_api_key'
+SEARCH_ENGINE_ID = 'your_cse_id'
+For Gmail, generate an App Password if 2FA is enabled.
+
+📤 Deployment
+This app is deployable on platforms like Heroku, Render, or Railway.
+
+Make sure to:
+
+Set environment variables for email + API keys
+
+Use the provided Procfile for deployment
+
+Install Chrome & chromedriver (if using Selenium in headless mode)
+
+📜 License
+This project is licensed under the MIT License.
+
+👤 Author
+Developed by @jesteresabiju
+
+📬 Contact
+For questions or support, email: workwithjesse123@gmail.com
