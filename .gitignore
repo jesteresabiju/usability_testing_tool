@@ -1,0 +1,18 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.so
+
+# Test and cache files
+*.log
+
+# PDF reports generated during testing
+*.pdf
+pdf_reports/
+
+# Ignore static output PDF
+static/report.pdf
+
+# OS-specific
+.DS_Store
+Thumbs.db
